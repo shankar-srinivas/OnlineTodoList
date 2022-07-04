@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Deloitte. Online TODO List</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<p th:text="'Successful LogIn, Welcome to Online Todo List'" />
+	
+
+	<div th:switch="${todoList}">
+		<h2 th:case="null">No TODO List</h2>
+		<div th:case="*">
+			<h2>TodoList</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Last Modified Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="todoItem : ${todoList}">
+						<td th:text="${todoItem.title}"></td>
+						<td th:text="${todoItem.description}"></td>
+						<td th:text="${todoItem.lastModifiedDate}"></td>
+						<td><a th:href="@{/edit/{id}(id=${todoItem.id})}">Edit</a></td>
+						<td><a th:href="@{/delete/{id}(id=${todoItem.id})}">Delete</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<p>
+			<a href="/addNewTodoItem">Add New Todo</a>
+		</p>
+		<p> 
+			<a href="/logout" />">Logout</a>
+		</p>
+	</div>
+
+</body>
+</html>

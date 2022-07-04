@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Deloitte. Online TODO List</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+	<form action="#" th:action="@{/addTodoItem}" th:object="${todoList}"
+		method="post">
+		<label for="title">Title</label> <input type="text"
+			th:field="*{title}" id="title" placeholder="Title"> <label
+			for="description">Description</label> <input type="text"
+			th:field="*{description}" id="description" placeholder="description">
+		<input type="submit" value="Add Todo Item">
+	</form>
+
+
+</body>
+</html>
